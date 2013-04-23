@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd"
+    xmlns:context="http://www.springframework.org/schema/context" >
+
+<!-- <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+ -->
+     
+	<!-- <bean id="triangle" class="com.osgo.Triangle" >
+	 	<property name="pointA" ref ="pointA" />
+	 	<property name="pointB" ref ="pointB" />
+	 	<property name="pointC" ref ="pointC" />
+	</bean> -->
+	
+	<bean id="pointA" class="com.osgo.Point" >
+	    <qualifier value="circleRelated" />
+	    <property name="x" value ="0" />
+	    <property name="y" value ="0" />  
+	</bean>
+	
+	<bean id="pointB" class="com.osgo.Point" >
+	    <property name="x" value ="-20" />
+	    <property name="y" value ="0" />  
+	</bean>
+	
+	<bean id="pointC" class="com.osgo.Point" >
+	    <property name="x" value ="0" />
+	    <property name="y" value ="20" />  
+	</bean>
+	
+	<bean id="circle" class="com.osgo.Circle" >
+	 	<!-- <property name="centre" ref ="pointA" />   // removing this line of code will result in a NullPointerException at runtime. -->
+	</bean>
+	
+	<!-- this bean post processor does the validation in the back end  -->
+	<!-- bean post processor checks for required annotations when all the bean are being instatiated -->
+	<!-- if the bpp finds a required annotation that is not met then bpp throws an exception -->
+	<!-- <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" />  -->
+	
+	<!-- <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" /> -->
+	
+	<context:annotation-config />	<!-- shortcut tag for all bean post processors --> 
+		
+</beans>
